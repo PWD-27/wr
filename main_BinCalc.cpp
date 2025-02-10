@@ -1,49 +1,40 @@
 #include <iostream>
 #include <bitset>
 #include <vector>
-
 //Calculadora binaria
-
 bool esBinario(std::string bin) {
     for (char c : bin) {
         if (c != '0' && c != '1') return false;
     }
     return true;
 }
-
 //binario a entero
 int binarioADecimal(std::string binario) {
     return std::bitset<32>(binario).to_ulong(); //sin decimales
 }
-
 std::string decimalABinario(int decimal) {
     return std::bitset<32>(decimal).to_string(); //string 32 bites sin decimales
-}
-
+    }
 std::string limpiarBinario(std::string bin) {
     size_t pos = bin.find('1');
     return (pos != std::string::npos) ? bin.substr(pos) : "0"; //Si todo es cero, devuelve solo un cero
-}
-
+    }
 int main() {
     int opcionNumeros, opcionOperacion;
     std::vector<int> numeros;
     std::string binario;
-
     do {
-        //menú numeros
-        std::cout << "\n======= MENU PRINCIPAL =======\n";
+        //menu numeros
+        std::cout << "\nMenu Principal<\n";
         std::cout << "1. Operar con 2 numeros binarios\n";
         std::cout << "2. Operar con 3 numeros binarios\n";
         std::cout << "3. Operar con 4 numeros binarios\n";
         std::cout << "4. Salir\n";
         std::cout << "Seleccione una opcion: ";
         std::cin >> opcionNumeros;
-
         if (opcionNumeros >= 1 && opcionNumeros <= 3) {
             int cantidad = opcionNumeros + 1;
             numeros.clear();
-
             for (int i = 0; i < cantidad; i++) {
                 do {
                     std::cout << "Ingrese el numero binario " << (i + 1) << ": ";
